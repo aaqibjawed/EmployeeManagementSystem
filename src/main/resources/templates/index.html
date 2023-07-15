@@ -1,43 +1,218 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 	
-	<head>
-		<title>List Employees</title>
-		
-		<link rel="stylesheet" 
-			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
-			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
-			crossorigin="anonymous" />
+			<head>
+				<title>List Employees</title>
+				   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="noreferrer"></script>
+				
+				<link rel="stylesheet" 
+					href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+					integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+					crossorigin="anonymous" />
+		<style>
+				body {
+			      margin: 0;
+			      padding: 0;
+			      font-family: Arialserif;
+			      background-color: #e1f573;
+			      
+			      flex-direction: column;
+
+			    }
+			
+			    header {
+			      background-color: #333;
+			      color: #fff;
+			      padding: 20px;
+			      text-align: center;
+			    }
+			    
+			
+			    nav {
+			      background-color: #777;
+			      padding: 10px;
+			    }
+			
+			    nav ul {
+			      list-style-type: none;
+			      margin: 0;
+			      padding: 0;
+			      text-align: center;
+			    }
+			
+			    nav ul li {
+			      display: inline-block;
+			    }
+			
+			    nav ul li a {
+			      display: block;
+			      padding: 10px 20px;
+			      text-decoration: none;
+			      color: #fcfcfc;
+			      font-weight: bold;
+			    }
+			    li a:hover {
+			      background-color: #111;
+			    }
+			    li a:active {
+			      background-color: #111;
+				}
+							
+				main {
+				margin-bottom:30px;
+				
+				}
+			    footer {
+			      position: fixed;
+				  right: 0;
+				  bottom: 0;
+				  left: 0;
+				  padding: 0rem;
+				  background-color: #efefef;
+				  text-align: center;
+			    }
+			    /* CSS styles for the table */
+			    .table {
+			      width: 100%;
+			      border:5px solid lightgreen;
+			      
+			    }
+			
+			    th, td {
+			      padding: 8px;
+			      text-align: left;
+			      border:2px solid white;
+			    }
+			
+			    th {
+			      background-color: #51f086;
+			      text-align: center;
+			    }
+			    td {
+			      background-color: #dcf7de;
+			    }
+			
+			    /* CSS styles for alternating row colors */
+			    /* tr {
+			      background-color: #5ae3e6;
+			    } */
+				/* tr:nth-child(odd) {
+			      background-color: #5ae3e6;
+			    } */
+			
+			    /* CSS styles for buttons */
+			    .btn {
+			      padding: 6px 12px;
+			      text-align: center;
+			      display: inline-block;
+			      border: none;
+			      background-color: #4CAF50;
+			      color: white;
+			      cursor: pointer;
+			      border-radius: 4px;
+			    }
+			
+			    .btn.edit {
+			      background-color: #2196F3;
+			    }
+			
+			    .btn.delete {
+			      background-color: #f44336;
+			    }
+			    h2{
+					text-align: center;
+					color:green;
+					font-weight: bold;
+					font-style: normal;
+					margin:5px;
+					font-size: 35px;
+			    }
+		  </style>
 	</head>
 	
 	<body>
+		<header>
+		    <h1>Employee Management System</h1>
+		 </header>
 		
-		<div class="container">
+		  <nav>
+		    <ul>
+		      <li><a href="/">Home</a></li>
+		      <li><a href="/addEmployee">Add</a></li>
+		      <li><a href="#">Services</a></li>
+		      <li><a href="#">Contact</a></li>
+		    </ul>
+		  </nav>
+		  
+		  
+		  <main>
 		
-			<h3>List Employees</h3>
+			<center><h2>Employees Details</h2></center>
 			
 			<hr/>
+			
+		<div class="container">
 		
-			<table class="table table-bordered table-striped">
+			<table class="table">
 			
 				<thead>
-					<tr>
-						<th>Employee Number</th>					
-						<th>Name</th>
-						<th>Email</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="employee: ${employees}">
-						<td th:text="${employee.empNo}" />
-						<td th:text="${employee.name}" />
-						<td th:text="${employee.email}" />
-					</tr>
-				</tbody>
+					
+			      <tr>
+			        <th>Employee Number</th>
+			        <th>First Name</th>
+			        <th>Last Name</th>
+			        <th>Phone No</th>
+			        <th>Email</th>
+			        <th>Action</th>
+			        <th>Action</th>
+			        <th>Action</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr th:each="employee: ${employees}">
+			      
+			      
+				  <td id = "emp_no" class="column-data1" th:text="${employee.emp_no}" />
+				  <td class="column-data2" th:text="${employee.first_name}" />
+				  <td class = "column-data3" th:text="${employee.last_name}" />
+				  <td class = "columndata" th:text="${employee.phoneNumber}" />
+				  <td class = "columndata" th:text="${employee.email}" />
+			      
+			        <td>
+			          <form action='/updateEmployeeData' method="post">
+			          <input type = "hidden" id = "emp_no" name = "emp_no" class="column-data1" th:value="${employee.emp_no}" />
+			          <button type="submit" class="btn edit" >Edit</button> </form>
+			         
+			        </td>
+			       
+			       <td>
+			       <form onsubmit="return alertBox();" th:action="@{/deleteEmployeeData}" th:object="${Employee}" method="post">
+			         <input type= "hidden" id = "emp_no" name = "emp_no" th:value="${employee.emp_no}" />			         
+			         <button type="submit" class="btn delete" >Delete</button></form>
+			         </td>
+			         <td>
+			         
+			         <form th:action="@{/viewEmp}" th:object="${Employee}" method = "post">
+			          <input type= "hidden" id = "emp_no" name = "emp_no" th:value="${employee.emp_no}" />			         
+			          <button class="btn view" type = "submit">View</button></form>
+			          </td>
+			      </tr>
+			    </tbody>
 				
 			</table>
 		</div>
-		
-		
+
+		</main>
+		<footer>
+    		&copy; 2023 Yokogawa. All rights reserved.
+  </footer>
 	</body>
+	<script type="text/javascript">
+	function alertBox(){
+		if(confirm("Are you sure want to delete?")==true){
+			
+		}
+		
+	}
+	</script>
 	
 </html>

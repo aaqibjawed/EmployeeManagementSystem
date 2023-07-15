@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="noreferrer"></script>
+
+<title>Add Employee</title>
+<script>
+      window.onload = function() {
+        // Get the value from localStorage
+        var value = localStorage.getItem('id');
+        
+        // Display the value on the page
+        var output = document.getElementById('emp_no');
+        output.innerText = value;
+      };
+    </script>
+<style type="text/css">
+	body{
+		margin: 0;
+		padding: 0;
+		font-family: Arial, sans-serif;
+		background-color: #e1f573;
+		flex-direction: column;	     
+			
+	}
+	hr{
+		margin-bottom:20px;
+	}
+	header{
+		background-color: #333;
+		text-align: center;
+		color:#fff;
+		padding: 20px;
+		
+	}
+	 nav {
+			      background-color: #777;
+			      padding: 10px;
+			    }
+			
+			    nav ul {
+			      list-style-type: none;
+			      margin: 0;
+			      padding: 0;
+			      text-align: center;
+			    }
+			
+			    nav ul li {
+			      display: inline-block;
+			    }
+			
+			    nav ul li a {
+			      display: block;
+			      padding: 10px 20px;
+			      text-decoration: none;
+			      color: #fcfcfc;
+			      font-weight: bold;
+			    }
+			    li a:hover {
+			      background-color: #111;
+			    }
+			    li a:active {
+			      background-color: #111;
+				}
+				main {
+				margin-bottom:30px;
+				
+				}
+			    footer {
+			      position: fixed;
+				  right: 0;
+				  bottom: 0;
+				  left: 0;
+				  padding: 0rem;
+				  background-color: #efefef;
+				  text-align: center;
+			    }			
+	
+	.container{
+		width:60%;
+		margin:auto;
+		background-color:  #dcf7de;;
+		padding:10px;
+		border: 10px solid #51f086;		
+	}
+	
+	input[type="number"],input[type="text"]{
+	display:block;
+	width: 100%;
+	margin:0;
+	padding-left:5px;
+	height: 25px;
+	border: 1px solid black;
+	border-radius:4px;
+	
+	}
+	input[type="number"]:focus,input[type="text"]:focus{
+	background-color: #fff;
+	
+	}
+	
+	input[type=submit]{
+		width:100%;
+		background:green;
+		color:#fff;
+		height:30px;
+		font-weight: bold;
+	}
+	input[type=submit]:hover{
+		width:100%;
+		background:#3beb4c;
+		color:white;
+		height:30px;
+		font-weight: bold;
+	}
+	input[readonly],input[readonly]:focus{
+		background-color: lightgrey;
+	}
+	h2{
+
+		text-align: center;
+		color:green;
+		font-weight: bold;
+		font-style: normal;
+		margin:5px;
+		font-size: 35px;
+	
+	}		
+</style>
+</head>
+<body>
+   		
+	<header>
+		<h1>Employee Management System</h1>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/addEmployee">Add</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</nav>
+	
+	<main>
+	 <h2 id = "h2">Update Employee</h2>
+		<hr>
+	
+		<div class="container">
+		
+ 		<form action="/addEmp" method="post">
+
+ 			<label >Employee Number</label>
+			<input type="text" name = "emp_no" id="emp_no" readonly th:value="${[Employee].emp_no}"><br>
+			<label id = "label">First name</label>
+			<input type="text" name = "first_name" th:value="${[Employee].first_name}"><br>
+			<label>Last name</label>
+			<input type="text" name = "last_name" th:value="${[Employee].last_name}"><br>
+			<label>Qualification</label>
+			<input type="text" name = "Qualification" th:value="${[Employee].Qualification}"><br>
+			<label>Office</label>
+			<select name = "office">
+				<option value = "EC">EC</option>
+				<option value = "ECity">ECity</option>
+			</select><br><br>			
+			<label>Department</label>
+			<input type="radio" name = "department" value = "GDC_I">GDC_I
+			<input type="radio" name = "department" value = "GDC_II">GDC_II<br><br>
+			
+			<label>Blood group</label>
+			<select name = "blood_group">
+				<option value = "A+">A+</option>
+				<option value = "A-">A-</option>
+				<option value = "B+">B+</option>
+				<option value = "B-">B-</option>
+				<option value = "AB+">AB+</option>
+				<option value = "AB-">AB-</option>
+				<option value = "O+">O+</option>
+				<option value = "O-">O-</option>
+			</select><br><br>
+			
+			
+			<label>Experience</label>
+			<input type="number" name = "exprience" th:value="${[Employee].exprience}"><br>
+			<label>phoneNumber</label>
+			<input type="text" name = "phoneNumber" th:value="${[Employee].phoneNumber}"><br>
+			<label>Email</label>
+			<input type="text" name = "email" th:value="${[Employee].email}"><br>
+			<label>Address</label>
+			<input type="text" name = "address" th:value="${[Employee].address}"><br>
+			<input type="submit">
+		</form>
+		</div>
+	
+	</main>
+		<footer>
+    		&copy; 2023 Yokogawa. All rights reserved.
+  </footer>
+</body>
+</html>
