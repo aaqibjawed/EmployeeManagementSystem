@@ -38,7 +38,12 @@ public class MainController {
 	@PostMapping("/addEmp")
 	public String add(@ModelAttribute Employee emp)
 	{
-		repo.save(emp);
+		try {
+			repo.save(emp);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return "redirect:/";
 	}
 	

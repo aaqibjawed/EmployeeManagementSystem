@@ -85,7 +85,7 @@
 		border: 10px solid #51f086;		
 	}
 	
-	input[type="number"],input[type="text"]{
+	input[type="number"],input[type="text"],input[type="email"]{
 	display:block;
 	width: 100%;
 	margin:0;
@@ -184,9 +184,9 @@
 			<label>Experience</label>
 			<input type="number" name = "exprience" th:value="${[Employee].exprience}"><br>
 			<label>phoneNumber</label>
-			<input type="text" name = "phoneNumber" th:value="${[Employee].phoneNumber}"><br>
+			<input type="number" maxlength="10" name = "phoneNumber" pattern="[0-9]{10}" th:value="${[Employee].phoneNumber}"><br>
 			<label>Email</label>
-			<input type="text" name = "email" th:value="${[Employee].email}"><br>
+			<input type="email" name = "email" th:value="${[Employee].email}"><br>
 			<label>Address</label>
 			<input type="text" name = "address" th:value="${[Employee].address}"><br>
 			<input type="submit">
@@ -195,7 +195,7 @@
 	
 	</main>
 		<footer>
-    		&copy; 2023 Yokogawa. All rights reserved.
+    		&copy; 2023 EMS Solution. All rights reserved.
   </footer>
 </body>
 </html>

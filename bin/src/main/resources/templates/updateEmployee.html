@@ -2,15 +2,26 @@
 <html xmlns:th="https://www.thymeleaf.org/">
 <head>
 <meta charset="ISO-8859-1">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="noreferrer"></script>
+
 <title>Add Employee</title>
+<script>
+      window.onload = function() {
+        // Get the value from localStorage
+        var value = localStorage.getItem('id');
+        
+        // Display the value on the page
+        var output = document.getElementById('emp_no');
+        output.innerText = value;
+      };
+    </script>
 <style type="text/css">
 	body{
 		margin: 0;
 		padding: 0;
-		font-family: Arialserif;
+		font-family: Arial, sans-serif;
 		background-color: #e1f573;
-			      
-		flex-direction: column;
+		flex-direction: column;	     
 			
 	}
 	hr{
@@ -52,18 +63,29 @@
 			    li a:active {
 			      background-color: #111;
 				}
-							
+				main {
+				margin-bottom:30px;
+				
+				}
+			    footer {
+			      position: fixed;
+				  right: 0;
+				  bottom: 0;
+				  left: 0;
+				  padding: 0rem;
+				  background-color: #efefef;
+				  text-align: center;
+			    }			
 	
 	.container{
 		width:60%;
 		margin:auto;
 		background-color:  #dcf7de;;
 		padding:10px;
-		border: 10px solid #51f086;
-		
+		border: 10px solid #51f086;		
 	}
 	
-	input[type="number"],input[type="text"],input[type="email"]{
+	input[type="number"],input[type="text"]{
 	display:block;
 	width: 100%;
 	margin:0;
@@ -77,6 +99,7 @@
 	background-color: #fff;
 	
 	}
+	
 	input[type=submit]{
 		width:100%;
 		background:green;
@@ -91,6 +114,9 @@
 		height:30px;
 		font-weight: bold;
 	}
+	input[readonly],input[readonly]:focus{
+		background-color: lightgrey;
+	}
 	h2{
 
 		text-align: center;
@@ -100,29 +126,11 @@
 		margin:5px;
 		font-size: 35px;
 	
-	}	
-	h3{
-
-		text-align: center;
-		color:black;
-		font-weight: bold;
-		font-style: normal;
-		margin:5px;
-		font-size: 25px;
-	
-	}	
-	footer {
-			      position: fixed;
-				  right: 0;
-				  bottom: 0;
-				  left: 0;
-				  padding: 0rem;
-				  background-color: #efefef;
-				  text-align: center;
-			    }
+	}		
 </style>
 </head>
 <body>
+   		
 	<header>
 		<h1>Employee Management System</h1>
 	</header>
@@ -136,33 +144,32 @@
 	</nav>
 	
 	<main>
-		<h2>Add Employee</h2>
+	 <h2 id = "h2">Update Employee</h2>
 		<hr>
 	
 		<div class="container">
-				<center><h3>Add Details</h3></center>
 		
  		<form action="/addEmp" method="post">
 
- 			<label>Employee Number</label>
-			<input type="number" required name = "emp_no"><br>
-			<label>First name</label>
-			<input type="text" required name = "first_name"><br>
+ 			<label >Employee Number</label>
+			<input type="text" name = "emp_no" id="emp_no" readonly th:value="${[Employee].emp_no}"><br>
+			<label id = "label">First name</label>
+			<input type="text" name = "first_name" th:value="${[Employee].first_name}"><br>
 			<label>Last name</label>
-			<input type="text" name = "last_name" required><br>
+			<input type="text" name = "last_name" th:value="${[Employee].last_name}"><br>
 			<label>Qualification</label>
-			<input type="text" name = "Qualification" required><br>
+			<input type="text" name = "Qualification" th:value="${[Employee].Qualification}"><br>
 			<label>Office</label>
-			<select name = "office" required>
+			<select name = "office">
 				<option value = "EC">EC</option>
 				<option value = "ECity">ECity</option>
 			</select><br><br>			
 			<label>Department</label>
-			<input type="radio" name = "department" value = "GDC_I" required>GDC_I
-			<input type="radio" name = "department" value = "GDC_II" required>GDC_II<br><br>
+			<input type="radio" name = "department" value = "GDC_I">GDC_I
+			<input type="radio" name = "department" value = "GDC_II">GDC_II<br><br>
 			
 			<label>Blood group</label>
-			<select name = "blood_group" required>
+			<select name = "blood_group">
 				<option value = "A+">A+</option>
 				<option value = "A-">A-</option>
 				<option value = "B+">B+</option>
@@ -175,20 +182,20 @@
 			
 			
 			<label>Experience</label>
-			<input type="number" name = "exprience" required><br>
+			<input type="number" name = "exprience" th:value="${[Employee].exprience}"><br>
 			<label>phoneNumber</label>
-			<input type="text" maxlength="10"  pattern="[0-9]{10}"  name = "phoneNumber" required><br>
+			<input type="text" name = "phoneNumber" th:value="${[Employee].phoneNumber}"><br>
 			<label>Email</label>
-			<input type="email" name = "email" required><br>
+			<input type="text" name = "email" th:value="${[Employee].email}"><br>
 			<label>Address</label>
-			<input type="text" name = "address" required><br>
+			<input type="text" name = "address" th:value="${[Employee].address}"><br>
 			<input type="submit">
 		</form>
 		</div>
-	</main>
-	<footer>
-    		&copy; 2023 EMS Solution. All rights reserved.
-  </footer>
 	
+	</main>
+		<footer>
+    		&copy; 2023 Yokogawa. All rights reserved.
+  </footer>
 </body>
 </html>
