@@ -1,99 +1,112 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<style>
-	body{
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<style>
+		body {
 			margin: 0;
 			padding: 0;
 			font-family: Arial, sans-serif;
 			background-color: #e1f573;
-			flex-direction: column;	     
-				
+			flex-direction: column;
+
 		}
-		hr{
-			margin-bottom:20px;
+
+		hr {
+			margin-bottom: 20px;
 		}
-		header{
+
+		header {
 			background-color: #333;
 			text-align: center;
-			color:#fff;
+			color: #fff;
 			padding: 20px;
-			
+
 		}
-	 nav{
-			      background-color: #777;
-			      padding: 10px;
-			    }
-			
-			    nav ul {
-			      list-style-type: none;
-			      margin: 0;
-			      padding: 0;
-			      text-align: center;
-			    }
-			
-			    nav ul li {
-			      display: inline-block;
-			    }
-			
-			    nav ul li a {
-			      display: block;
-			      padding: 10px 20px;
-			      text-decoration: none;
-			      color: #fcfcfc;
-			      font-weight: bold;
-			    }
-			    li a:hover {
-			      background-color: #111;
-			    }
-			    li a:active {
-			      background-color: #111;
-				}
-				main {
-				margin-bottom:30px;
-				
-				}
-			    footer {
-			      position: fixed;
-				  right: 0;
-				  bottom: 0;
-				  left: 0;
-				  padding: 0rem;
-				  background-color: #efefef;
-				  text-align: center;
-			    }
-					
-			.container{
-				border-radius:10px;
-				width:40%;
-				margin:auto;
-				padding: 50px;
-				background-color:  #dcf7de;;
-				border: 10px solid #51f086;
-				
-			}
-			table{
-					width:80%;
-					margin:auto;	
-			
-			}
-			td,input.data{
-				font-size:20px;
-				background-color: #dcf7de;
-				border:none;
-			}
-			h2{
-				text-align: center;
-			}
-	
-</style>
+
+		nav {
+			background-color: #777;
+			padding: 10px;
+		}
+
+		nav ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+
+		nav ul li {
+			display: inline-block;
+		}
+
+		nav ul li a {
+			display: block;
+			padding: 10px 20px;
+			text-decoration: none;
+			color: #fcfcfc;
+			font-weight: bold;
+		}
+
+		li a:hover {
+			background-color: #111;
+		}
+
+		li a:active {
+			background-color: #111;
+		}
+
+		main {
+			margin-bottom: 30px;
+
+		}
+
+		footer {
+			position: fixed;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			padding: 0rem;
+			background-color: #efefef;
+			text-align: center;
+		}
+
+		.container {
+			border-radius: 10px;
+			width: 40%;
+			margin: auto;
+			padding: 50px;
+			background-color: #dcf7de;
+			;
+			border: 10px solid #51f086;
+
+		}
+
+		table {
+			width: 80%;
+			margin: auto;
+
+		}
+
+		td,
+		input.data {
+			font-size: 20px;
+			background-color: #dcf7de;
+			border: none;
+		}
+
+		h2 {
+			text-align: center;
+		}
+	</style>
 
 </head>
+
 <body>
 
-<header>
+	<header>
 		<h1>Employee Management System</h1>
 	</header>
 	<nav>
@@ -104,65 +117,68 @@
 			<li><a href="#">Contact</a></li>
 		</ul>
 	</nav>
-	
+
 	<main>
-	 <h2 id = "h2">View Employee</h2>
+		<h2 id="h2">View Employee</h2>
 		<hr>
-	
-	<div class="container">
-	<h3><center>Employee Details</center></h3>
-	<table>
-		<tr>
-				<td class = "label">Employee ID:</td>
-				<td><input readonly class = "data" th:value="${[Employee].emp_no}"/></td>
-		</tr>
-		<tr>
-		
-				<td class = "label">First Name:</td>
-				<td><input readonly class = "data" th:value="${[Employee].first_name}"/></td>
-		</tr>
-		<tr>		
-		
-				<td class = "label">Last Name:</td>
-				<td><input readonly class = "data" th:value="${[Employee].last_name}"/></td>
-		</tr>
-		<tr>
-				<td class = "label">Qualification:</td>
-				<td><input readonly class = "data" th:value="${[Employee].Qualification}"/></td>
-		</tr>
-		<tr>
-				<td class = "label">Office:</td>
-				<td><input readonly class = "data" th:value="${[Employee].office}"/></td>
-		</tr>
-		<tr>
-				<td class = "label">Department:</td>
-				<td><input readonly class = "data" th:value="${[Employee].department}"/></td>
-		</tr>
-		<tr>
-				<td class = "label">Blood Group:</td>
-				<td><input readonly class = "data" th:value="${[Employee].blood_group}"/></td>
-		</tr>
-		<tr>
-				<td class = "label">Experience:</td>
-				<td><input readonly class = "data" th:value="${[Employee].exprience}"/></td>
-		</tr>
-		<tr>
-				<td class = "label">Phone Number:</td>
-				<td><input readonly class = "data" th:value="${[Employee].phoneNumber}"/></td>
-		</tr>
-		<tr>
-				<td class = "label">Email:</td>
-				<td><input readonly class = "data" th:value="${[Employee].email}"/></td>
-		</tr>
-		<tr>
-				<td class = "label">Address:</td>
-				<td><input readonly class = "data" th:value="${[Employee].address}"/></td>
-		</tr>
-</table>
-</div>
-</main>
-		<footer>
-    		&copy; 2023 EMS Solution. All rights reserved.
-  </footer>
+
+		<div class="container">
+			<h3>
+				<center>Employee Details</center>
+			</h3>
+			<table>
+				<tr>
+					<td class="label">Employee ID:</td>
+					<td><input readonly class="data" th:value="${[Employee].emp_no}" /></td>
+				</tr>
+				<tr>
+
+					<td class="label">First Name:</td>
+					<td><input readonly class="data" th:value="${[Employee].first_name}" /></td>
+				</tr>
+				<tr>
+
+					<td class="label">Last Name:</td>
+					<td><input readonly class="data" th:value="${[Employee].last_name}" /></td>
+				</tr>
+				<tr>
+					<td class="label">Qualification:</td>
+					<td><input readonly class="data" th:value="${[Employee].Qualification}" /></td>
+				</tr>
+				<tr>
+					<td class="label">Office:</td>
+					<td><input readonly class="data" th:value="${[Employee].office}" /></td>
+				</tr>
+				<tr>
+					<td class="label">Department:</td>
+					<td><input readonly class="data" th:value="${[Employee].department}" /></td>
+				</tr>
+				<tr>
+					<td class="label">Blood Group:</td>
+					<td><input readonly class="data" th:value="${[Employee].blood_group}" /></td>
+				</tr>
+				<tr>
+					<td class="label">Experience:</td>
+					<td><input readonly class="data" th:value="${[Employee].exprience}" /></td>
+				</tr>
+				<tr>
+					<td class="label">Phone Number:</td>
+					<td><input readonly class="data" th:value="${[Employee].phoneNumber}" /></td>
+				</tr>
+				<tr>
+					<td class="label">Email:</td>
+					<td><input readonly class="data" th:value="${[Employee].email}" /></td>
+				</tr>
+				<tr>
+					<td class="label">Address:</td>
+					<td><input readonly class="data" th:value="${[Employee].address}" /></td>
+				</tr>
+			</table>
+		</div>
+	</main>
+	<footer>
+		&copy; 2023 EMS Solution. All rights reserved.
+	</footer>
 </body>
+
 </html>

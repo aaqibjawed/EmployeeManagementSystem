@@ -22,7 +22,7 @@ public class MainController {
 	@Autowired
 	private repository repo;
 
-		
+
 	@GetMapping({"/"})
 	public ModelAndView getAllEmployees() {
 		ModelAndView mav = new ModelAndView("index");
@@ -34,22 +34,22 @@ public class MainController {
 	{
 		return "addemployee";
 	}
-	
+
 	@PostMapping("/addEmp")
 	public String add(@ModelAttribute Employee emp)
 	{
 		try {
 			repo.save(emp);
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return "redirect:/";
 	}
-	
+
 	@GetMapping("/updateEmployee")
 	public String updateEmployee() {
-		
+
 		return "updateEmployee";
 	}
 	@PostMapping("/updateEmployeeData")
@@ -58,20 +58,20 @@ public class MainController {
 		mv.addObject("employee", repo.findById(emp.getEmp_no()));
 		return "redirect:/updateEmployee/"+emp.getEmp_no();
 	}
-	
+
 	@GetMapping("/updateEmployee/{id}")
 	public ModelAndView updateEmployeeData(@ModelAttribute("id") String id) {
 		ModelAndView mv = new ModelAndView("updateEmployee");
 
 		try {
 			Employee empl = new Employee();
-			
+
 			mv.addObject("Employee",repo.findById(id).get());
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		return mv;
 	}
 	@PostMapping("/deleteEmployeeData")
@@ -79,10 +79,10 @@ public class MainController {
 		repo.deleteById(emp.getEmp_no());
 		return "redirect:/";
 	}
-	
+
 	@GetMapping("/viewEmployee")
 	public String viewEmployee() {
-		
+
 		return "viewEmployee";
 	}
 	@PostMapping("/viewEmp")
@@ -91,10 +91,10 @@ public class MainController {
 		Employee emp = new Employee();
 		emp = repo.findById(empl.getEmp_no()).get();
 		mv.addObject("Employee", emp);
-		
+
 		return mv;
 	}
-	
-	
-	
+
+
+
 }
