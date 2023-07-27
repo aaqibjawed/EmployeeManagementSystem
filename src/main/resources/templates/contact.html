@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Add Employee</title>
+	<title>Contact</title>
 	<style type="text/css">
 		body {
 			margin: 0;
@@ -72,7 +72,8 @@
 
 		input[type="number"],
 		input[type="text"],
-		input[type="email"] {
+		input[type="email"]
+		 {
 			display: block;
 			width: 100%;
 			margin: 0;
@@ -81,6 +82,14 @@
 			border: 1px solid black;
 			border-radius: 4px;
 
+		}
+		textarea{
+			display: block;
+			width: 100%;
+			margin: 0;
+			padding-left: 5px;
+			border: 1px solid black;
+			border-radius: 4px;
 		}
 
 		input[type="number"]:focus,
@@ -152,15 +161,15 @@
 	</nav>
 
 	<main>
-		<h2>Add Employee</h2>
+		<h2>Contact Us</h2>
 		<hr>
 
 		<div class="container">
 			<center>
-				<h3>Add Details</h3>
+				<h3>Contact Form</h3>
 			</center>
 
-			<form action="/addEmp" method="post">
+			<form action="/saveContact" method="post">
 
 				<label>Employee Number</label>
 				<input type="number" required name="emp_no"><br>
@@ -168,38 +177,12 @@
 				<input type="text" required name="first_name"><br>
 				<label>Last name</label>
 				<input type="text" name="last_name" required><br>
-				<label>Qualification</label>
-				<input type="text" name="Qualification" required><br>
-				<label>Office</label>
-				<select name="office" required>
-					<option value="EC">EC</option>
-					<option value="ECity">ECity</option>
-				</select><br><br>
-				<label>Department</label>
-				<input type="radio" name="department" value="GDC_I" required>GDC_I
-				<input type="radio" name="department" value="GDC_II" required>GDC_II<br><br>
-
-				<label>Blood group</label>
-				<select name="blood_group" required>
-					<option value="A+">A+</option>
-					<option value="A-">A-</option>
-					<option value="B+">B+</option>
-					<option value="B-">B-</option>
-					<option value="AB+">AB+</option>
-					<option value="AB-">AB-</option>
-					<option value="O+">O+</option>
-					<option value="O-">O-</option>
-				</select><br><br>
-
-
-				<label>Experience</label>
-				<input type="number" name="exprience" required><br>
-				<label>phoneNumber</label>
+				<label>Phone Number</label>
 				<input type="text" maxlength="10" pattern="[0-9]{10}" name="phoneNumber" required><br>
 				<label>Email</label>
 				<input type="email" name="email" required><br>
-				<label>Address</label>
-				<input type="text" name="address" required><br>
+				<label>Your message</label>
+				<textarea type="text" rows="5" cols="50" name="message" required> </textarea><br>
 				<input type="submit">
 			</form>
 		</div>

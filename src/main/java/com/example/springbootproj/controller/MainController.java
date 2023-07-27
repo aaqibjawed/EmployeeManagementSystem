@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.springbootproj.model.Employee;
+import com.example.springbootproj.model.Message;
+import com.example.springbootproj.repository.messageRepository;
 import com.example.springbootproj.repository.repository;
 
 import ch.qos.logback.core.model.Model;
@@ -21,6 +23,9 @@ public class MainController {
 
 	@Autowired
 	private repository repo;
+	
+	@Autowired
+	private messageRepository messageRepo;
 
 
 	@GetMapping({"/"})
@@ -78,6 +83,18 @@ public class MainController {
 	public String deleteEmployeeData(@ModelAttribute Employee emp) {
 		repo.deleteById(emp.getEmp_no());
 		return "redirect:/";
+	}
+	
+	@GetMapping("/contactUs")
+	public String contact()
+	{
+		return "contact";
+	}
+	
+	@PostMapping("/saveContact")
+	public String saveContact(@ModelAttribute Message message) {
+		messageRepo.save(message);
+		return "redirect:/contactUs";
 	}
 
 	@GetMapping("/viewEmployee")
